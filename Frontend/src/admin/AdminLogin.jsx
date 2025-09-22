@@ -12,14 +12,14 @@ function AdminLogin() {
     e.preventDefault();
     setError("");
 
-    // Get admin users from localStorage
+    
     const adminUsers = JSON.parse(localStorage.getItem('adminUsers')) || [];
     
-    // Find admin with matching email and password
+    
     const admin = adminUsers.find(admin => admin.email === email && admin.password === password);
     
     if (admin) {
-      // Successful admin login
+    
       localStorage.setItem('adminAuthenticated', 'true');
       localStorage.setItem('adminUser', JSON.stringify(admin));
       
