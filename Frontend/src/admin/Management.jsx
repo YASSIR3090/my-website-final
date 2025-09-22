@@ -9,14 +9,14 @@ function Management() {
   const [userMessages, setUserMessages] = useState([]);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  // Load data from localStorage on component mount
+  
   useEffect(() => {
     loadRegistrations();
     loadApplications();
     loadJobApplications();
     loadUserMessages();
     
-    // Set up interval to check for new data
+    
     const interval = setInterval(() => {
       loadRegistrations();
       loadApplications();
@@ -65,7 +65,6 @@ function Management() {
       const storedMessages = localStorage.getItem('userComments');
       if (storedMessages) {
         const allMessages = JSON.parse(storedMessages);
-        // Filter out messages deleted by admin
         const visibleMessages = allMessages.filter(msg => !msg.deletedByAdmin);
         setUserMessages(visibleMessages);
       }
@@ -87,7 +86,7 @@ function Management() {
         return msg;
       });
       
-      // Update localStorage
+      
       localStorage.setItem('userComments', JSON.stringify(updatedMessages));
       setUserMessages(updatedMessages.filter(msg => !msg.deletedByAdmin));
     }
@@ -107,7 +106,7 @@ function Management() {
         return msg;
       });
       
-      // Update localStorage
+      
       localStorage.setItem('userComments', JSON.stringify(updatedMessages));
       setUserMessages(updatedMessages);
       alert("Reply sent successfully!");
