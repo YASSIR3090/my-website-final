@@ -67,10 +67,10 @@ function Applications({ apiBaseUrl }) {
       const data = await response.json();
       
       if (response.ok && data.success) {
-        // Show success message
+        
         setShowSuccess(true);
         
-        // Save application data for admin (Management.jsx)
+      
         const applicationData = {
           userId: currentUser.id,
           userName: `${currentUser.firstName} ${currentUser.lastName}`,
@@ -83,12 +83,12 @@ function Applications({ apiBaseUrl }) {
           applicationDate: new Date().toLocaleString()
         };
 
-        // Get existing applications or initialize empty array
+        
         const existingApplications = JSON.parse(localStorage.getItem('jobApplications') || '[]');
         existingApplications.push(applicationData);
         localStorage.setItem('jobApplications', JSON.stringify(existingApplications));
 
-        // Also save to documents list
+      
         const documentData = {
           userId: currentUser.id,
           userName: `${currentUser.firstName} ${currentUser.lastName}`,
@@ -104,14 +104,14 @@ function Applications({ apiBaseUrl }) {
         existingDocuments.push(documentData);
         localStorage.setItem('userApplications', JSON.stringify(existingDocuments));
         
-        // Hide success message after 5 seconds
+      
         setTimeout(() => setShowSuccess(false), 5000);
         
-        // Reset form
+      
         setCvFile(null);
         setApplicationLetterFile(null);
         
-        // Clear file inputs
+        
         document.getElementById('cvUpload').value = '';
         document.getElementById('applicationLetterUpload').value = '';
       } else {
@@ -133,7 +133,7 @@ function Applications({ apiBaseUrl }) {
     setActiveItem(item);
   };
 
-  // Get job title from URL parameters if available
+  
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const job = urlParams.get('job');
