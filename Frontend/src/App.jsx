@@ -8,23 +8,19 @@ import Applications from './Pages/Applications.jsx';
 import Profile from './Pages/Profile.jsx';
 import Jobs from './Pages/Jobs.jsx';
 import AdminLogin from './admin/AdminLogin.jsx';
-import AdminRegister from './admin/adminRegister.jsx'; // 🔁 HERUFI NDOGO
+import AdminRegister from './admin/adminRegister.jsx'; 
 import Management from './admin/Management.jsx';
 import HomePage from './HomePage.jsx';
 
-// API Base URL - IMPORTANT! 
-// Badilisha hii kwa URL ya Backend ya Live (Heroku) baada ya kuweka live
-const API_BASE_URL = 'http://localhost:8000/api';
-// Au weka kwa live backend: 
-// const API_BASE_URL = 'https://your-heroku-app.herokuapp.com/api';
+ 
 
-// Protected Route Component for regular users
+const API_BASE_URL = 'http://localhost:8000/api';
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
-// Protected Route Component for admin users
+
 const AdminProtectedRoute = ({ children }) => {
   const isAdminAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
   return isAdminAuthenticated ? children : <Navigate to="/admin-login" replace />;
