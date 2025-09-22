@@ -33,19 +33,19 @@ function AdminRegister() {
     setError("");
     setSuccess("");
 
-    // Validate passwords match
+    
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    // Validate password strength
+  
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
     }
 
-    // Check if admin already exists
+    
     const existingAdmins = JSON.parse(localStorage.getItem('adminUsers')) || [];
     if (existingAdmins.some(admin => admin.email === formData.email)) {
       setError("Admin with this email already exists");
@@ -71,7 +71,7 @@ function AdminRegister() {
 
     setSuccess("Admin account created successfully! You can now login.");
     
-    // Clear form
+    
     setFormData({
       firstName: "",
       middleName: "",
@@ -84,7 +84,7 @@ function AdminRegister() {
       confirmPassword: ""
     });
 
-    // Redirect to login after 2 seconds
+    
     setTimeout(() => {
       navigate('/admin-login');
     }, 2000);
