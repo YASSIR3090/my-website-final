@@ -28,11 +28,11 @@ function Dashboard({ apiBaseUrl }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeItem, setActiveItem] = useState("dashboard");
 
-  // Get user data from localStorage
+  
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
-      // Merge stored data with default structure to ensure all fields exist
+    
       const mergedUserData = {
         ...userData,
         ...currentUser,
