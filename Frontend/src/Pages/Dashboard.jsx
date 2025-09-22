@@ -58,16 +58,16 @@ function Dashboard({ apiBaseUrl }) {
     setActiveItem(item);
   };
 
-  // Function to create and download a PDF certificate
+  
   const downloadCertificatePDF = (type, userData) => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    // Add certificate background
+    
     doc.setFillColor(240, 240, 240);
     doc.rect(0, 0, 210, 297, 'F');
     
-    // Add header
+    
     doc.setFillColor(13, 110, 253);
     doc.rect(0, 0, 210, 40, 'F');
     doc.setTextColor(255, 255, 255);
@@ -75,17 +75,15 @@ function Dashboard({ apiBaseUrl }) {
     doc.setFont(undefined, 'bold');
     doc.text('ZAWA EMPLOYMENT SYSTEM', 105, 25, { align: 'center' });
     
-    // Add certificate title
+  
     doc.setTextColor(13, 110, 253);
     doc.setFontSize(18);
     doc.text(type === 'birth' ? 'BIRTH CERTIFICATE' : 'EDUCATION CERTIFICATE', 105, 60, { align: 'center' });
     
-    // Add decorative elements
+    
     doc.setDrawColor(13, 110, 253);
     doc.setLineWidth(1);
     doc.line(50, 65, 160, 65);
-    
-    // Add user information
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
     doc.setFont(undefined, 'normal');
