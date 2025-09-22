@@ -154,7 +154,7 @@ function Dashboard({ apiBaseUrl }) {
     doc.text('OFFICIAL', 160, y - 13, { align: 'center' });
     doc.text('STAMP', 160, y - 5, { align: 'center' });
     
-    // Add footer
+    
     doc.setTextColor(100, 100, 100);
     doc.setFontSize(10);
     doc.text('ZAWA Employment System - Certificate Verification', 105, 280, { align: 'center' });
@@ -164,10 +164,10 @@ function Dashboard({ apiBaseUrl }) {
     doc.save(`${type === 'birth' ? 'birth_certificate' : 'education_certificate'}_${userData.idNumber || 'document'}.pdf`);
   };
 
-  // Function to handle document download
+  
   const handleDownload = (documentData, fileName, documentType) => {
     if (documentType === 'birth' || documentType === 'education') {
-      // Generate and download PDF certificate
+      
       downloadCertificatePDF(documentType, userData);
       return;
     }
@@ -187,12 +187,12 @@ function Dashboard({ apiBaseUrl }) {
         link.click();
         document.body.removeChild(link);
       } 
-      // If it's a file path or URL
+      
       else if (typeof documentData === 'string') {
-        // For external URLs, open in new tab
+  
         window.open(documentData, '_blank');
       } 
-      // If it's a file object (from input)
+      
       else if (documentData instanceof File) {
         const url = URL.createObjectURL(documentData);
         const link = document.createElement('a');
@@ -201,7 +201,7 @@ function Dashboard({ apiBaseUrl }) {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        // Clean up the URL object
+        
         URL.revokeObjectURL(url);
       }
     } catch (error) {
@@ -210,10 +210,10 @@ function Dashboard({ apiBaseUrl }) {
     }
   };
 
-  // Function to handle document viewing
+
   const handleView = (documentData, documentType) => {
     if (documentType === 'birth' || documentType === 'education') {
-      // For certificates, download the PDF first
+    
       downloadCertificatePDF(documentType, userData);
       return;
     }
@@ -224,7 +224,7 @@ function Dashboard({ apiBaseUrl }) {
     }
     
     try {
-      // If it's a data URL (image), open in new tab
+      
       if (typeof documentData === 'string' && documentData.startsWith('data:image/')) {
         const newTab = window.open();
         newTab.document.write(`
@@ -237,16 +237,16 @@ function Dashboard({ apiBaseUrl }) {
         `);
         newTab.document.close();
       } 
-      // If it's a file path or URL
+    
       else if (typeof documentData === 'string') {
-        // For external URLs, open in new tab
+        
         window.open(documentData, '_blank');
       }
-      // If it's a file object (from input)
+    
       else if (documentData instanceof File) {
         const url = URL.createObjectURL(documentData);
         window.open(url, '_blank');
-        // Note: We can't revoke the URL immediately as the new tab needs it
+      
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       }
     } catch (error) {
@@ -255,7 +255,7 @@ function Dashboard({ apiBaseUrl }) {
     }
   };
 
-  // Function to check if a document is available
+  
   const isDocumentAvailable = (documentData) => {
     return documentData && documentData !== "Available" && documentData !== null;
   };
