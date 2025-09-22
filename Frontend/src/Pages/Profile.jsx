@@ -210,7 +210,7 @@ function Profile() {
     window.open(url, '_blank');
   };
 
-  // Filter comments to show only those not deleted by user
+
   const visibleComments = comments.filter(comment => !comment.deletedByUser);
 
   return (
