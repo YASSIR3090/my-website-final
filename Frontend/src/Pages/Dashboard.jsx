@@ -43,9 +43,9 @@ function Dashboard({ apiBaseUrl }) {
       };
       setUserData(mergedUserData);
       
-      // Update profile completion based on whether profile photo exists
+    
       if (mergedUserData.profilePhoto) {
-        setProfileCompletion(95); // Higher completion if profile photo is uploaded
+        setProfileCompletion(95); 
       }
     }
   }, []);
@@ -132,18 +132,18 @@ function Dashboard({ apiBaseUrl }) {
       : 'This is to certify that the educational information provided is true and accurate according to our records.', 
     30, y, { maxWidth: 150 });
     
-    // Add issue date
+    
     y += 20;
     doc.setFont(undefined, 'italic');
     doc.text(`Issued on: ${new Date().toLocaleDateString()}`, 30, y);
     
-    // Add signature area
+    
     y += 30;
     doc.setDrawColor(0, 0, 0);
     doc.line(30, y, 80, y);
     doc.text('Authorized Signature', 30, y + 5);
     
-    // Add stamp
+    
     doc.setDrawColor(255, 0, 0);
     doc.setLineWidth(1);
     doc.circle(160, y - 10, 15);
@@ -158,7 +158,7 @@ function Dashboard({ apiBaseUrl }) {
     doc.text('ZAWA Employment System - Certificate Verification', 105, 280, { align: 'center' });
     doc.text('https://zawa-employmentsystem.vercel.app', 105, 285, { align: 'center' });
     
-    // Save the PDF
+    
     doc.save(`${type === 'birth' ? 'birth_certificate' : 'education_certificate'}_${userData.idNumber || 'document'}.pdf`);
   };
 
@@ -176,7 +176,7 @@ function Dashboard({ apiBaseUrl }) {
     }
     
     try {
-      // If it's a data URL (image), download as image
+      
       if (typeof documentData === 'string' && documentData.startsWith('data:image/')) {
         const link = document.createElement('a');
         link.href = documentData;
